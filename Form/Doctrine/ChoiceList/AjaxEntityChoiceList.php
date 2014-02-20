@@ -11,7 +11,6 @@
 
 namespace Genemu\Bundle\FormBundle\Form\Doctrine\ChoiceList;
 
-use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList;
 use Symfony\Component\PropertyAccess\PropertyPath;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\ORMQueryBuilderLoader;
 use Symfony\Component\PropertyAccess\PropertyAccess;
