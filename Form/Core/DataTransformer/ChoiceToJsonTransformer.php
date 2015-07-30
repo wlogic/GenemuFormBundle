@@ -11,9 +11,9 @@
 
 namespace Genemu\Bundle\FormBundle\Form\Core\DataTransformer;
 
+use Symfony\Component\Form\ChoiceList\LegacyChoiceListAdapter;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
-use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
@@ -31,12 +31,14 @@ class ChoiceToJsonTransformer implements DataTransformerInterface
     /**
      * Constructs
      *
-     * @param ArrayChoiceList $choiceList
-     * @param boolean         $ajax
+     * @param LegacyChoiceListAdapter $choiceList
+     * @param boolean                 $ajax
+     * @param string                  $widget
+     * @param bool                    $multiple
      */
-    public function __construct(ChoiceListInterface $choiceList, $ajax = false, $widget = 'choice', $multiple = false)
+    public function __construct(LegacyChoiceListAdapter $choiceList, $ajax = false, $widget = 'choice', $multiple = false)
     {
-        $this->choiceList = $choiceList;
+        $this->choiceList = $choiceList->getAdaptedList();
         $this->ajax = $ajax;
         $this->multiple = $multiple;
         $this->widget = $widget;

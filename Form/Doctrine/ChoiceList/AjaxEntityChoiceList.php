@@ -67,6 +67,18 @@ class AjaxEntityChoiceList extends EntityChoiceList
     /**
      * {@inheritdoc}
      */
+    public function getValues()
+    {
+        if ($this->ajax) {
+            return array();
+        }
+
+        return parent::getValues();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getChoices()
     {
         $choices = $this->getRemainingViews();
@@ -126,7 +138,7 @@ class AjaxEntityChoiceList extends EntityChoiceList
                 $id = current($this->classMetadata->getIdentifierValues($entity));
 
                 if ($this->propertyPath) {
-                    $label = PropertyAccess::getPropertyAccessor()->getValue($entity, $this->propertyPath);
+                    $label = PropertyAccess::createPropertyAccessor()->getValue($entity, $this->propertyPath);
                 } else {
                     $label = (string) $entity;
                 }
