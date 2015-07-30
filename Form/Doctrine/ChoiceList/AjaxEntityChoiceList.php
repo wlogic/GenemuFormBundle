@@ -67,6 +67,18 @@ class AjaxEntityChoiceList extends EntityChoiceList
     /**
      * {@inheritdoc}
      */
+    public function getValues()
+    {
+        if ($this->ajax) {
+            return array();
+        }
+
+        return parent::getValues();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getChoices()
     {
         $choices = $this->getRemainingViews();
